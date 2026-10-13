@@ -32,11 +32,7 @@ for _stream in (sys.stdout, sys.stderr):
 
 # ---------------------------------------------------------------------------
 # 配置
-# ---------------------------------------------------------------------------
-env:
-  CHECK_WORKER: https://${{ secrets.DOMAIN }}/check?sstp=vpn:vpn@
-  CHECK_CONCURRENCY: 32
-  CHECK_TIMEOUT: 90
+# --------------------------------------------------------------------------
 
 REPO_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -45,7 +41,6 @@ VPNGATE_MIRROR = os.environ.get(
     "VPNGATE_MIRROR",
     "https://raw.githubusercontent.com/fdciabdul/Vpngate-Scraper-API/main/json/data.json",
 )
-CHECK_WORKER: ${{ secrets.DOMAIN }}
 WORKER_CHECK_URL = os.environ.get("CHECK_WORKER", "https://你的域名/check?sstp=vpn:vpn@")
 CONCURRENCY = max(1, int(os.environ.get("CHECK_CONCURRENCY", "32")))
 CHECK_TIMEOUT = float(os.environ.get("CHECK_TIMEOUT", "90"))
