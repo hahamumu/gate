@@ -33,6 +33,11 @@ for _stream in (sys.stdout, sys.stderr):
 # ---------------------------------------------------------------------------
 # 配置
 # ---------------------------------------------------------------------------
+env:
+  CHECK_WORKER: https://${{ secrets.DOMAIN }}/check?sstp=vpn:vpn@
+  CHECK_CONCURRENCY: 32
+  CHECK_TIMEOUT: 90
+
 REPO_DIR = os.path.dirname(os.path.abspath(__file__))
 
 VPNGATE_API = os.environ.get("VPNGATE_API", "http://www.vpngate.net/api/iphone/")
